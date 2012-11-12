@@ -15,23 +15,38 @@ import urllib2
 import base64
 import sys
 import time
+import cgi
 
+print "Content-type: text/html\n\n";
 
 #x01 - dados do servidor de ftp
-ftpuser = "usuario_ftp"
-ftppass = "senha_ftp"
-ftphost = "servidor_ftp"
+ftpuser = "ftp_user"
+ftppass = "senha_de_ftp"
+ftphost = "host_ftp"
 ftpmode = "ftp" 
 ftpport = "21"
 ftprdir = '/'
-email = "seu_email"
+email = "email de notificacao"
 #--------------------------------
 
-senha = ""
-host = ""
+form = cgi.FieldStorage()
+senha = form.getvalue('senha').strip()
+host = form.getvalue('rserver').strip()
+ssl = form.getvalue('ssl')
+protocolo = 'http'
+porta = '2082'
+contas = []
+cont = form.getvalue('contas')
+for c in cont.split('\n'):
+	contas.append(c.strip())
+
+if ssl == 'ssl':
+	protocolo = 'https'
+	porta = '2083'
+
 
 def acessa_cpanel(conta):
-        req = urllib2.Request('https://'+host+':2083/frontend/x3/backup/dofullbackup.html?'+"dest="+ftpmode+"&email="+email+"&server="+ftphost+"&user="+ftpuser+"&pass="+ftppass+"&port="+ftpport+"&rdir="+ftprdir+"&submit=Generate Backup")
+        req = urllib2.Request(protocolo+'://'+host+':'+porta+'/frontend/x3/backup/dofullbackup.html?'+"dest="+ftpmode+"&email="+email+"&server="+ftphost+"&user="+ftpuser+"&pass="+ftppass+"&port="+ftpport+"&rdir="+ftprdir+"&submit=Generate Backup")
         base64string = base64.encodestring('%s:%s' % (conta, senha))[:-1]
         authheader =  "Basic %s" % base64string
         req.add_header("Authorization", authheader)
@@ -41,52 +56,20 @@ def acessa_cpanel(conta):
             handle.read() #lol
 	    print 'host -> '+host
             print 'Acessou com sucesso!'
-            print 'Enviando por ftp'
+            print 'Enviando por ftp<br>'
         except IOError, e:
 	    print 'erro -> ',e 
-            print "Login Falhou, Por favor verifique os dados de acesso."
-            sys.exit(1)
-
-
-banner = """
-Script que envia backups do CPanel por ftp
-
-Feito por Alisson Menezes - GR1L0S3C0 - culturadocaracter.com.br
-
-################################################################
-
-Edite os dados do seu servidor de FTP dentro do script:
-
-################################################################
-
-
-
-Se a senha tiver caracteres especiais coloque entre aspas ""
-
-Uso:
-
-python backup_ftp.py ip_do_host login senha
-
-Ex:
-
-python backup_ftp.py 191.168.0.2 conta1 "!@!23axc"
-
-
-"""
-
-
-print banner
+            print "Login Falhou, Por favor verifique os dados de acesso.<br>"
+            #sys.exit(1)
 
 
 if __name__ == "__main__":
 	try:	
-		args = sys.argv
-		for a in args:
-			print a
-		host = args[1]
-		senha = args[3]
-		acessa_cpanel(args[2])
-		print 'agora verifique se chegou no seu ftp, a transferencia demora algum tempo dependendo do tamanho do arquivo'
-	except:
-		if len(args) < 3 :
-			print banner
+		print 'senha -> '+senha+'<br>'
+		print 'host -> '+host+'<br>' 
+		for c in contas:
+			acessa_cpanel(c)
+
+		print '<br>voce pode acompanhar o recebimento dos arquivos usando o comando <b>while ( du -h *.tar.gz ); do sleep 1; clear; done </b>no diretorio do ftp - obs. o comando so funciona se ja existir pelo menos um .tar.gz no diretorio'
+	except Exception, e:
+		print e
