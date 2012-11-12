@@ -1,0 +1,22 @@
+<html>
+
+backups ftp cpanel<br>
+este app envia os arquivos para o ftp nrserver9<br>
+--------------------------------------------
+<form method='post' action='cpanel_backup.py'>
+informe o ip do servidor: <input type='text' size=15 name='rserver'><br>
+informe a senha do servidor: <input type='text' size=15 name='senha'><br>
+SSL - <input type='checkbox' name='ssl' value='ssl'><br>
+informe todas as contas, uma abaixo da outra separadas por enter:<br>
+<textarea cols=30 row=30 name='contas'>contas</textarea><br>
+<input type='submit' name='enviar' value='enviar'><br>
+
+----------------------------------------------
+</form>
+
+
+Caso ao dar submit no formulario apareça o código fonte do script ao invés de exexecuta-lo, você precisa editar o /etc/httpd.conf em AddHandler e adicionar a extensão .py para que o script funcione.<br>
+
+
+Feito por Alisson Menezes - gr1l0s3c0 - culturadocaracter.com.br
+</html>
