@@ -54,7 +54,7 @@ print "==================================================="
 
 os.system("sleep 1")
 os.system("echo \n\n\n")
-passwd = "SENHA_DO_SEU_SERVIDOR#"
+passwd = "SENHA_DO_SEU_SERVIDOR"
 
 for c in contas:
 
@@ -62,7 +62,6 @@ for c in contas:
 		print "######## GERANDO ARQUIVO FULLBACKUP #############"
 		p = pexpect.spawn("ssh root@"+origem+" /scripts/pkgacct-disable "+c)
 		p.waitnoecho()
-		#child.expect('Password:')
 		p.sendline(passwd)
 		p.sendline("exit")
 		p.interact()
