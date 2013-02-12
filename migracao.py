@@ -1,7 +1,9 @@
 #!/usr/bin/python
 #
-# Inicio do programa de migracao interna esta parte e onde o usuario entra com os dados
-# faz o tratamento de erros chamando o shell script para utilizacao de ssh
+# Script feito para migracao interna de contas do cpanel
+# ele realiza os mesmos procedimentos manuais, porem automatizados usando o modulo pexpect
+#
+# Qualquer bug ou duvida na utilizacao poem me perguntar (:
 #
 # Feito por Alisson Menezes - alisson.copyleft@gmail.com
 # Github: https://github.com/kernelcrash
