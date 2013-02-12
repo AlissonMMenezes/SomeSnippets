@@ -7,7 +7,7 @@
 # Github: https://github.com/kernelcrash
  
  
-if [ $# -lt 1 ]; then
+if [ $# -lt w ]; then
         clear
         echo "###############################################################################"
         echo "Script para migracao interna de contas do cpanel"
