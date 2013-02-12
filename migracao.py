@@ -57,16 +57,7 @@ os.system("echo \n\n\n")
 passwd = "SENHA_DO_SEU_SERVIDOR#"
 
 for c in contas:
-	script = '''
-	if [ -f /home/*'''+c+'''.tar.gz ]; then
-        	echo "esta no home"
-	elif [ -f /home2/*'''+c+'''.tar.gz ]; then
-        	echo "ta no home2
-	else
-	        echo "'''+c+''' ta no home3"
-	fi
 
-	'''
 	try:
 		print "######## GERANDO ARQUIVO FULLBACKUP #############"
 		p = pexpect.spawn("ssh root@"+origem+" /scripts/pkgacct-disable "+c)
