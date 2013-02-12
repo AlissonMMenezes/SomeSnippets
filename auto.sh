@@ -14,7 +14,6 @@ if [ $# -lt 1 ]; then
         echo "feito por Alisson Menezes - alisson.copyleft@gmail.com"
         echo "Github: https://github.com/kernelcrash"
         echo "###############################################################################"
-        echo "O script foi desenvolvido no para ser usado como modulo do migracao.py"
         echo "#################################################################################"
         echo "Uso do script:"
         echo "Argumentos: funcao login_cpanel origem destino"
