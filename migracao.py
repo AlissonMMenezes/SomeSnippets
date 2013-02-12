@@ -3,7 +3,7 @@
 # Script feito para migracao interna de contas do cpanel
 # ele realiza os mesmos procedimentos manuais, porem automatizados usando o modulo pexpect
 #
-# Qualquer bug ou duvida na utilizacao poem me perguntar (:
+# Qualquer bug ou duvida na utilizacao podem me perguntar (:
 #
 # Feito por Alisson Menezes - alisson.copyleft@gmail.com
 # Github: https://github.com/kernelcrash
