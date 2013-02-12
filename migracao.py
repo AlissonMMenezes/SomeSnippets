@@ -54,7 +54,7 @@ print "==================================================="
 
 os.system("sleep 1")
 os.system("echo \n\n\n")
-passwd = "3u0d310tr0c4rS3nh4@#"
+passwd = "SENHA_DO_SEU_SERVIDOR#"
 
 for c in contas:
 	script = '''
