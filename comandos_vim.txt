@@ -1,0 +1,47 @@
+
+#arquivo de configuracao do vim
+	/etc/vim/vimrc #Debian
+	/etc/vimrc     #CentOS
+
+#Comandos
+	i,insert - insercao na posicao atual do cursor 
+	a - insercao um caracter a frente
+   	 o - insercao na linha abaixo
+ 	gg - inicio do arquivo
+	 G - fim do arquivo
+	 yy - copia uma linha
+	  p - cola uma linha
+	 dd - apaga uma linha
+	 2dd, d2d - apaga intervalo de linhas
+     2yy, y2y - copia intervalo de linhas
+      x - apaga caracter
+	 cc - corta uma linha
+	  u - desfazer
+	ctrl + r - refazer
+	  v - modo visual
+      / - busca uma palavra
+ %s/ORIGEM/DESTINO/g - substituir
+	  w  - salvar um arquivo
+	 wq,x,ZZ - salvar e sair
+	  q! - sair sem salvar
+		h - esquerda
+		j - pra baixo
+		k - pra cima
+		l - direita
+	   
+
+ 
+#Recursos
+	:set number	- numeracao das linhas
+	:syntax on	- ativa syntax highlight
+	:set cul	- sublinha a linha atual do cursor
+	:set hlsearch   - marca palavra buscada
+	:set incsearch  - busca incremental
+	:set tabstop=4  - muda quantidade de espacos do tab
+	:set ic         - ignora case sensitive
+
+	split  - abre arquivos na horizontal
+	vsplit - abre arquivos na vertical
+	
+	ctrl+ww - alterna janelas
+
